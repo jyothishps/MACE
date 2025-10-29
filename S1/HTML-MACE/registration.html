@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Registration Form</title>
+    
+</head>
+<body>
+    <div>
+        <h2>Course Registration Form</h2>
+
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <table>
+                <tr>
+                    <td><label for="name">Full Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td> 
+                    <td>
+                        <input type="radio" name="gender" value="Male"> Male
+                        <input type="radio" name="gender" value="Female"> Female
+                        <input type="radio" name="gender" value="Other"> Other
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob"></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="3"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone:</label></td>
+                    <td><input type="tel" id="phone" name="phone"></td>
+                </tr>
+                <tr>
+                    <td><label for="guardian">Guardian Name:</label></td>
+                    <td><input type="text" id="guardian" name="guardian"></td>
+                </tr>
+                <tr>
+                    <td>Hobbies & Extra Activities:</td>
+                    <td class="checkbox-group">
+                        <input type="checkbox" name="hobby" value="Sports"> Sports
+                        <input type="checkbox" name="hobby" value="Music"> Music
+                        <input type="checkbox" name="hobby" value="Dance"> Dance
+                        <input type="checkbox" name="hobby" value="Reading"> Reading
+                        <input type="checkbox" name="hobby" value="Other"> Other
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <!-- Course Selection -->
+        <fieldset>
+            <legend>Course Selection</legend>
+            <div>
+                <input type="radio" name="course" value="BA"> BA
+                <input type="radio" name="course" value="B.Sc"> B.Sc
+                <input type="radio" name="course" value="BCA"> BCA
+            </div>
+        </fieldset>
+
+        <!-- Office Use Section -->
+        <fieldset>
+            <legend>Office Use Only</legend>
+            <div>
+                <table>
+                    <tr>
+                        <td>Registration No:</td>
+                        <td>_</td>
+                    </tr>
+                    <tr>
+                        <td>Admitted By:</td>
+                        <td>_</td>
+                    </tr>
+                    <tr>
+                        <td>Remarks:</td>
+                        <td>_</td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="btn">
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</body>
+</html>

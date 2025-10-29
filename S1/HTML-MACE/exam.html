@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <script>
+        function validateForm() {
+            let name = document.forms["regForm"]["name"].value.trim();
+            let email = document.forms["regForm"]["email"].value.trim();
+            let password = document.forms["regForm"]["pass"].value.trim();
+            let cfrmpass = document.forms["regForm"]["cfrmpass"].value.trim();
+            let phone = document.forms["regForm"]["phone"].value.trim();
+            
+            if(name=="") {
+                alert("Name is required.....!!!!");
+                return false;
+            }
+            if(email=="") {
+                alert("email is required.....!!!!");
+                return false;
+            }
+            if(password=="") {
+                alert("password is required.....!!!!");
+                return false;
+            }
+            if(cfrmpass=="") {
+                alert("cfrmpass is required.....!!!!");
+                return false;
+            }
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailPattern.test(email)) {
+                alert("Enter a valid email address...!!!");
+                return false;
+            }
+
+            if(password.length < 8) {
+                alert("Password must contain atleast 8 characters......!!!!");
+                return false;
+            }
+
+            if(password!==cfrmpass) {
+                alert("Passwords do not match.......!!!!!!!");
+                return false;
+            }
+            
+            let phonePattern = /^[0-9]{10}$/;
+            if(!phonePattern.test(phone)) {
+                alert("Enter valid phone number....!!!");
+                return false;
+            }
+            alert("Registration Successfull");
+            return true;
+        }
+    </script>
+    <style>
+        div {
+            border:1px solid black;
+            margin-left: 40%;
+            margin-right: 40%;
+            margin-top: 10%;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: lightgray;
+            font-family:'Courier New', Courier, monospace;
+            border-color: lightgray;
+        }
+        input[type = "submit"] {
+            border-radius: 10px;
+            margin-top: 10px;
+            width:80%;
+            padding: 5px;
+            background-color: black;
+            color: white;
+        }
+        body {
+            background-color: gray;
+        }
+        input[type = "text"],input[type = "email"],input[type="password"] {
+            border-radius:20px;
+            margin: 10px;
+            height: 25px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 align="center">Registration</h1>
+        <form name="regForm" onsubmit="return validateForm()">
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Password:</label></td>
+                    <td><input type="password" name="pass"></td>
+                </tr>
+                <tr>
+                    <td><label for="cfrmpass">Confirm Password:</label></td>
+                    <td><input type="password" name="cfrmpass"></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone:</label></td>
+                    <td><input type="text" name="phone"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><center><input type="submit" value="Register"></center></td>
+                </tr>
+            </table>
+            
+        </form>
+    </div>
+</body>
+</html>
