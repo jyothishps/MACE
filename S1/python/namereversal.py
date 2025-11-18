@@ -1,0 +1,5 @@
+full_name = input('Enter your full name:')
+words = full_name.split()
+words.reverse()
+reversed_name = ' '.join(words)
+print('Reversed name ->',reversed_name)
