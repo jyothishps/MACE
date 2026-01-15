@@ -1,97 +1,63 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define MAX 100
+#include<stdio.h>
+#include<conio.h>
+#define MAX 25
 
-// -------- Global Variables --------
-typedef struct {
-    int src, dest, weight;
-} Edge;
+int parent[MAX];
 
-Edge heap[MAX];     // Declare before using in functions
-int heapSize = 0;
-int parent[MAX];    // For Disjoint Set (Union-Find)
-
-// -------- Disjoint Set (Union-Find) --------
 int find(int i) {
-    if (parent[i] == i)
-        return i;
-    return parent[i] = find(parent[i]);
+    while(parent[i]!=i)
+        i = parent[i];
+    return i;
 }
 
-void unionSet(int a, int b) {
-    int pa = find(a);
-    int pb = find(b);
-    parent[pb] = pa;
+void union_set(int i,int j) {
+    parent[i] = j;
 }
 
-// --------Heap Operations--------
-void swap(Edge *a, Edge *b) {
-    Edge temp = *a; *a = *b; *b = temp;
-}
-
-void insertHeap(Edge e) {
-    heap[heapSize] = e;
-    int i = heapSize++;
-    while (i > 0 && heap[(i - 1) / 2].weight > heap[i].weight) {
-        swap(&heap[i], &heap[(i - 1) / 2]);
-        i = (i - 1) / 2;
-    }
-}
-
-Edge extractMin() {
-    Edge root = heap[0];
-    heap[0] = heap[--heapSize];
-    int i = 0;
-    while (1) {
-        int left = 2 * i + 1, right = 2 * i + 2, smallest = i;
-        if (left < heapSize && heap[left].weight < heap[smallest].weight)
-            smallest = left;
-        if (right < heapSize && heap[right].weight < heap[smallest].weight)
-            smallest = right;
-        if (smallest == i) break;
-        swap(&heap[i], &heap[smallest]);
-        i = smallest;
-    }
-    return root;
-}
-
-// --------Kruskal’s Algorithm--------
 int main() {
-    int V, E;
-    printf("Enter number of vertices and edges: ");
-    scanf("%d %d", &V, &E);
-
-    printf("Enter edges (src dest weight):\n");
-    for (int i = 0; i < E; i++) {
-        Edge e;
-        scanf("%d %d %d", &e.src, &e.dest, &e.weight);
-        insertHeap(e);  // Insert edge into heap
+    int i,j,u[MAX],v[MAX],w[MAX],e,n,mincost = 0;
+    printf("Enter no. of vertices:");
+    scanf("%d",&n);
+    printf("Enter no. of edges:");
+    scanf("%d",&e);
+    // Enter all u v w
+    printf("Enter src, dest, weight:\n");
+    for(i=1;i<=e;i++) {
+        printf("Enter s,d,w:");
+        scanf("%d%d%d",&u[i],&v[i],&w[i]);
     }
-
-    // Initialize disjoint sets
-    for (int i = 0; i < V; i++)
-        parent[i] = i;
-
-    printf("\nEdges in the Minimum Spanning Tree:\n");
-    int totalWeight = 0, count = 0;
-
-    while (heapSize > 0 && count < V - 1) {
-        Edge e = extractMin();
-
-        int u = e.src;
-        int v = e.dest;
-
-        int pu = find(u);
-        int pv = find(v);
-
-        if (pu != pv) {
-            printf("%d -- %d == %d\n", u, v, e.weight);
-            totalWeight += e.weight;
-            unionSet(pu, pv);
-            count++;
+    // Bubble sort edges based on weight
+    for(i=1;i<=e-1;i++) {
+        for(j=1;j<=e-i;j++) {
+            if(w[j] > w[j+1]) {
+                int temp;
+                temp = w[j]; w[j] = w[j+1]; w[j+1] = temp;
+                temp = u[j]; u[j] = u[j+1]; u[j+1] = temp;
+                temp = v[j]; v[j] = v[j+1]; v[j+1] = temp;
+            }
         }
     }
+    // Initialize parent array
+    for(i=1;i<=n;i++)
+        parent[i] = i;
 
-    printf("Total weight of MST: %d\n", totalWeight);
+    int count = 0;
+    i = 1;
+
+    printf("MCST\n");
+
+    while(i<=e && count<n-1) {
+        int a = find(u[i]);
+        int b = find(v[i]);
+        if(a!=b) {
+            printf("%d - %d : %d\n",u[i],v[i],w[i]);
+            mincost+=w[i];
+            count++;
+            union_set(a,b);
+        }
+        i++;
+    }
+    printf("Minimum Cost: %d\n",mincost);
+
     return 0;
 }
