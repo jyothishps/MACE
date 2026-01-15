@@ -80,6 +80,10 @@
 
 int parent[MAX];
 
+// Initialize parent array
+for(i=1;i<=n;i++)
+    parent[i] = i;
+
 int find(int i) {
     while(parent[i] != i)
         i = parent[i];
@@ -121,9 +125,6 @@ int main() {
             }
         }
     }
-    // Initialize parent array
-    for(i=1;i<=n;i++)
-        parent[i] = i;
 
     int count = 0;
     i=1;
