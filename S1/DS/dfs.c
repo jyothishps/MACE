@@ -5,40 +5,58 @@ int visited[MAX];
 int adj[MAX][MAX];
 int n;
 
+void display() {
+
+}
+
 void DFS(int vertex) {
-    int i;
     visited[vertex] = 1;
     printf("%d ",vertex);
-    for(i=1;i<=n;i++) {
-        if(adj[vertex][i] == 1 && !visited[i]) {
+    for(int i=1;i<=n;i++) {
+        if(adj[vertex][i] == 1 && !visited[i])
             DFS(i);
-        }
     }
 }
 
 int main() {
-    int i,j;
     int start;
-
-    printf("Enter no. of vertices: ");
+    printf("Enter no. of vertices:");
     scanf("%d",&n);
-
-    printf("Enter adjacency matrix (0 or 1):\n");
-    for(i=1;i<=n;i++) {
-        for(j=1;j<=n;j++) {
+    printf("Enter adjacency matrix:\n");
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=n;j++) {
             scanf("%d",&adj[i][j]);
         }
     }
 
-    for(i=1;i<=n;i++)
+    // Adjacency matrix
+    printf("Adjacency Matrix:\n");
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=n;j++) {
+            printf("%d\t",adj[i][j]);
+        }
+        printf("\n");
+    }
+
+    for(int i=1;i<=n;i++)
+        adj[i][i] = 0;
+
+    printf("Adjacency Matrix with no loops:\n");
+    for(int i=1;i<=n;i++) {
+        for(int j=1;j<=n;j++) {
+            printf("%d\t",adj[i][j]);
+        }
+        printf("\n");
+    }
+
+    // initialize vertex[]
+
+    for(int i=1;i<=n;i++)
         visited[i] = 0;
-
-    printf("Enter starting vertex (1 - %d): ",n);
+    
+    printf("Enter starting vertex (1-%d):",n);
     scanf("%d",&start);
-
-    printf("DFS Traversal starting from %d:\n",start);
+    printf("DFS starting from %d:",start);
     DFS(start);
-
-    printf("\n");
     return 0;
 }
