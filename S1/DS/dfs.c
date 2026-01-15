@@ -9,7 +9,7 @@ void DFS(int vertex) {
     int i;
     visited[vertex] = i;
     printf("%d ",vertex);
-    for(i=0;i<n;i++) {
+    for(i=1;i<=n;i++) {
         if(adj[vertex][i] == 1 && !visited[i]) {
             DFS(i);
         }
@@ -24,16 +24,16 @@ int main() {
     scanf("%d",&n);
 
     printf("Enter adjacency matrix (0 or 1):\n");
-    for(i=0;i<n;i++) {
-        for(j=0;j<n;j++) {
+    for(i=1;i<=n;i++) {
+        for(j=1;j<=n;j++) {
             scanf("%d",&adj[i][j]);
         }
     }
 
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
         visited[i] = 0;
 
-    printf("Enter starting vertex (0 - %d): ",n-1);
+    printf("Enter starting vertex (1 - %d): ",n);
     scanf("%d",&start);
 
     printf("DFS Traversal starting from %d:\n",start);
