@@ -1,70 +1,93 @@
 #include <stdio.h>
-#include <stdlib.h>
-
 #define MAX 100
 
 int queue[MAX], front = -1, rear = -1;
+int visited[MAX];
+int adj[MAX][MAX];
+int n;
 
-// Function to add a vertex to the queue
+/* Enqueue */
 void enqueue(int vertex) {
-    if (rear == MAX - 1)
+    if (rear == MAX - 1) {
         printf("Queue Overflow\n");
-    else {
-        if (front == -1)
-            front = 0;
-        queue[++rear] = vertex;
+        return;
     }
+    if (front == -1)
+        front = rear = 0;
+    else
+        rear++;
+    queue[rear] = vertex;
 }
 
-// Function to remove a vertex from the queue
+/* Dequeue */
 int dequeue() {
     if (front == -1 || front > rear)
         return -1;
-    else
-        return queue[front++];
+    return queue[front++];
 }
 
-// Function to perform BFS
-void BFS(int adj[MAX][MAX], int n, int start) {
-    int visited[MAX] = {0};
-    int i, current;
+/* BFS Function */
+void BFS(int vertex) {
+    int current;
 
-    enqueue(start);
-    visited[start] = 1;
-
-    printf("Breadth First Search starting from vertex %d: ", start);
+    enqueue(vertex);
+    visited[vertex] = 1;
 
     while ((current = dequeue()) != -1) {
         printf("%d ", current);
-
-        for (i = 0; i < n; i++) {
-            if (adj[current][i] == 1 && visited[i] == 0) {
+        for (int i = 1; i <= n; i++) {
+            if (adj[current][i] == 1 && !visited[i]) {
                 enqueue(i);
                 visited[i] = 1;
             }
         }
     }
-    printf("\n");
 }
 
 int main() {
-    int adj[MAX][MAX];
-    int n, i, j, start;
+    int start;
 
-    printf("Enter number of vertices: ");
+    printf("Enter no. of vertices: ");
     scanf("%d", &n);
 
-    printf("Enter adjacency matrix of the graph:\n");
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
+    printf("Enter adjacency matrix:\n");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
             scanf("%d", &adj[i][j]);
         }
     }
 
-    printf("Enter the starting vertex (0 to %d): ", n - 1);
+    /* Print adjacency matrix */
+    printf("\nAdjacency Matrix:\n");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            printf("%d\t", adj[i][j]);
+        }
+        printf("\n");
+    }
+
+    /* Remove self-loops */
+    for (int i = 1; i <= n; i++)
+        adj[i][i] = 0;
+
+    /* Print matrix without loops */
+    printf("\nAdjacency Matrix with no loops:\n");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            printf("%d\t", adj[i][j]);
+        }
+        printf("\n");
+    }
+
+    /* Initialize visited */
+    for (int i = 1; i <= n; i++)
+        visited[i] = 0;
+
+    printf("\nEnter starting vertex (1-%d): ", n);
     scanf("%d", &start);
 
-    BFS(adj, n, start);
+    printf("BFS starting from %d: ", start);
+    BFS(start);
 
     return 0;
 }
