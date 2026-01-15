@@ -43,7 +43,7 @@ void display() {
             printf("%d ",cqueue[i]);
     }
     else {
-        for(int i=front;i<=MAX;i++)
+        for(int i=front;i<=MAX-1;i++)
             printf("%d ",cqueue[i]);
         for(int i=0;i<=rear;i++)
             printf("%d ",cqueue[i]);
