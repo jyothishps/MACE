@@ -7,7 +7,7 @@ int n;
 
 void DFS(int vertex) {
     int i;
-    visited[vertex] = i;
+    visited[vertex] = 1;
     printf("%d ",vertex);
     for(i=1;i<=n;i++) {
         if(adj[vertex][i] == 1 && !visited[i]) {
