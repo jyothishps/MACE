@@ -90,7 +90,7 @@ void postorder(Node *root) {
 }
 
 int main() {
-    Node *min, *root = NULL;
+    Node *min,*found, *root = NULL;
     int ch, val;
     while(1) {
         printf("\n---BST OPERATIONS---\n");
@@ -126,8 +126,8 @@ int main() {
             case 6:
                 printf("Enter value to search:");
                 scanf("%d",&val);
-                root = search(root,val);
-                if(root)
+                found = search(root,val);
+                if(found)
                     printf("%d is present in the BST\n",val);
                 else
                     printf("%d is not present\n",val);
