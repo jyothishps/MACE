@@ -11,3 +11,4 @@ print("No. of strings where string length is 2 or more and first and last charac
 
 # Enter strings:level apple malayalam
 # No. of strings where string length is 2 or more and first and last characters are same: 2
+
