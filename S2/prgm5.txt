@@ -1,0 +1,88 @@
+1. wc – Word Count Command
+
+Description:
+wc counts the number of lines, words, and characters in a file.
+
+Command	Brief Description
+wc sample.txt	Displays lines, words, and characters
+wc -l sample.txt	Displays number of lines
+wc -w sample.txt	Displays number of words
+wc -c sample.txt	Displays number of characters
+2. cut – Column Extract Command
+
+Description:
+cut extracts specific fields or character positions from each line of a file.
+
+Command	Brief Description
+cut -d',' -f1 data.csv	Extracts first field using comma delimiter
+cut -d',' -f2 data.csv	Extracts second field
+cut -c1-5 sample.txt	Extracts characters from position 1 to 5
+cut -c6-10 sample.txt	Extracts characters from position 6 to 10
+3. paste – File Merge Command
+
+Description:
+paste merges lines from multiple files horizontally.
+
+Command	Brief Description
+paste file1.txt file2.txt	Merges files using tab delimiter
+paste -d',' file1.txt file2.txt	Merges files using comma delimiter
+paste -d':' file1.txt file2.txt	Merges files using colon delimiter
+4. head – Display Beginning of File
+
+Description:
+head displays the first few lines of a file.
+
+Command	Brief Description
+head sample.txt	Displays first 10 lines
+head -n 5 sample.txt	Displays first 5 lines
+head -n 10 sample.txt	Displays first 10 lines
+5. tail – Display End of File
+
+Description:
+tail displays the last few lines of a file.
+
+Command	Brief Description
+tail sample.txt	Displays last 10 lines
+tail -n 5 sample.txt	Displays last 5 lines
+tail -n 10 sample.txt	Displays last 10 lines
+tail -f logfile.log	Displays file updates in real time
+6. grep – Pattern Search Command
+
+Description:
+grep searches for a specified pattern in files.
+
+Command	Brief Description
+grep "Linux" sample.txt	Searches for the word "Linux"
+grep -i "linux" sample.txt	Case-insensitive search
+grep -n "Linux" sample.txt	Displays matching lines with line numbers
+grep -r "main" .	Searches recursively in directories
+7. expr – Expression Evaluation
+
+Description:
+expr evaluates arithmetic and string expressions.
+
+Command	Brief Description
+expr 10 + 20	Adds two numbers
+expr 20 - 5	Subtracts two numbers
+expr 5 \* 4	Multiplies two numbers
+expr 20 / 5	Divides two numbers
+expr length "Linux"	Finds string length
+8. chmod – Change File Permissions
+
+Description:
+chmod changes access permissions of files and directories.
+
+Command	Brief Description
+chmod 777 test.sh	Full permission to all users
+chmod 755 test.sh	Owner full, others read & execute
+chmod u+x test.sh	Adds execute permission to owner
+chmod go-r test.sh	Removes read permission from group & others
+9. chown – Change File Ownership
+
+Description:
+chown changes the owner and group of a file.
+
+Command	Brief Description
+sudo chown user1 file.txt	Changes file owner
+sudo chown user1:group1 file.txt	Changes owner and group
+sudo chown -R user1:group1 dir/	Changes ownership recursively
