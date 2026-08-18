@@ -1,10 +1,10 @@
 import java.util.*;
 
-class Product {
+class ProductItem {
     String name;
     int price;
 
-    Product(String name, int price) {
+    ProductItem(String name, int price) {
         this.name = name;
         this.price = price;
     }
@@ -14,7 +14,7 @@ public class ProductsList {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        ArrayList<Product> products = new ArrayList<>();
+        ArrayList<ProductItem> products = new ArrayList<>();
         int ch;
 
         while(true) {
@@ -38,7 +38,7 @@ public class ProductsList {
                     System.out.print("Enter price: ");
                     int price = sc.nextInt();
 
-                    products.add(new Product(name, price));
+                    products.add(new ProductItem(name, price));
                     System.out.println("Product added successfully.");
                     break;
 
@@ -56,7 +56,7 @@ public class ProductsList {
                         System.out.println("List is empty.");
                     } else {
                         System.out.println("Product List:");
-                        for(Product p : products) {
+                        for(ProductItem p : products) {
                             System.out.println("Name: " + p.name + " Price: " + p.price);
                         }
                     }

@@ -159,6 +159,7 @@ public class BookManager {
                     case 7:
                         con.close();
                         System.out.println("Exiting...");
+                        sc.close();
                         System.exit(0);
 
                     default:
@@ -168,6 +169,10 @@ public class BookManager {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (sc != null) {
+                sc.close();
+            }
         }
     }
 }
